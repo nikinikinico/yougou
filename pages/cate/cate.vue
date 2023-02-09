@@ -1,5 +1,6 @@
 <template>
   <view>
+    <my-search @click="getSearch"></my-search>
     <view class="scroll-view-container">
       <scroll-view class="left-scroll-view" scroll-y="true" :style="{height:wh+'px'}">
         <block v-for="(item,index) in cateList" :key="index">
@@ -37,14 +38,13 @@
     },
     onLoad() {
     const sysInfo =  uni.getSystemInfoSync()
-    this.wh = sysInfo.windowHeight
+    this.wh = sysInfo.windowHeight-50
     // 获取分类列表数据
     this.getCateList()
     },
     methods:{
       async getCateList(){
         const {data:res} = await uni.$http.get('/api/public/v1/categories')
-        console.log(res)
         if(res.meta.status!==200) return uni.$showMsg()
         this.cateList = res.message
         this.cateLevel2 = res.message[0].children
@@ -58,6 +58,11 @@
         uni.navigateTo({
           url:'/subpkg/goods_list/goods_list?cid='+item.cat_id
         })
+      },
+      getSearch(){
+         uni.navigateTo({
+       url: '/subpkg/search/search'
+     })
       }
     }
   }
@@ -66,6 +71,8 @@
 <style lang="scss">
 .scroll-view-container{
   display: flex;
+  background-color: #fff;
+  padding-bottom: 10px;
   .left-scroll-view{
     width: 120px;
     .left-scroll-item{
@@ -104,7 +111,7 @@
 .cate-lv3-list{
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   .cata-lv3-item{
     width:33.33%;
     display: flex;

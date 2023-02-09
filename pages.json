@@ -41,6 +41,15 @@
                 }
                 
                 }
+                ,{
+                    "path" : "search/search",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
             ]
     }
   ],
@@ -48,7 +57,7 @@
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "云鲸优购",
     "navigationBarBackgroundColor": "#C00000",
-    "backgroundColor": "#FFFFFF",
+    "backgroundColor": "#fff",
     "app-plus": {
       "background": "#efeff4"
     }
