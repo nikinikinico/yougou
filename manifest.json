@@ -55,7 +55,11 @@
         "setting" : {
             "urlCheck" : false
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        /* 添加收货地址权限 */
+        "requiredPrivateInfos": [
+        "chooseAddress"
+        ]
     },
     "vueVersion" : "2"
 }
