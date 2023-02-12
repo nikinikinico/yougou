@@ -11,6 +11,13 @@ $http.beforeRequest = function (options) {
   uni.showLoading({
     title: '数据加载中...',
   })
+  // 判断是否为有权限的借口
+  if(options.url.indexOf('/my/')!==-1){
+    // 为请求头添加字段
+    options.header = {
+      Authorization: store.state.m_user.token,
+    }
+  }
 }
 $http.afterRequest = function(options){
   uni.hideLoading()
